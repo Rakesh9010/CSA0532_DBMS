@@ -1,0 +1,96 @@
+mysql> create database bikes;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use bikes;
+Database changed
+mysql> create table bikes(name varchar(25),engin_cc varchar(20),cost int(15));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc bikes;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| name     | varchar(25) | YES  |     | NULL    |       |
+| engin_cc | varchar(20) | YES  |     | NULL    |       |
+| cost     | int(15)     | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> insert into bikes values("pulsar","ns200",150000)
+    -> ;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into bikes values("duke","cc280",180000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from bikes;
++--------+----------+--------+
+| name   | engin_cc | cost   |
++--------+----------+--------+
+| pulsar | ns200    | 150000 |
+| duke   | cc280    | 180000 |
++--------+----------+--------+
+2 rows in set (0.00 sec)
+
+mysql> alter table bikes add accident varchar(25);
+Query OK, 2 rows affected (0.03 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> desc bikes;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| name     | varchar(25) | YES  |     | NULL    |       |
+| engin_cc | varchar(20) | YES  |     | NULL    |       |
+| cost     | int(15)     | YES  |     | NULL    |       |
+| accident | varchar(25) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> drop table bikes;
+Query OK, 0 rows affected (0.02 sec)
+mysql> create table bikes(name varchar(20),engine_cc varchar(25),cost int(18));
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> desc bikes;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| name      | varchar(20) | YES  |     | NULL    |       |
+| engine_cc | varchar(25) | YES  |     | NULL    |       |
+| cost      | int(18)     | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> alter table bikes add primary key (name);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc bikes;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| name      | varchar(20) | NO   | PRI |         |       |
+| engine_cc | varchar(25) | YES  |     | NULL    |       |
+| cost      | int(18)     | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+3 rows in set (0.03 sec)
+
+mysql> alter table bike add unique key (cost);
+ERROR 1146 (42S02): Table 'bikes.bike' doesn't exist
+mysql> alter table bikes add unique key (cost);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> dsec bikes;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'dsec bikes' at line 1
+mysql> desc bikes;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| name      | varchar(20) | NO   | PRI |         |       |
+| engine_cc | varchar(25) | YES  |     | NULL    |       |
+| cost      | int(18)     | YES  | UNI | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
