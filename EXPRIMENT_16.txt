@@ -1,0 +1,55 @@
+mysql> use sse;
+Database changed
+mysql> desc mentees;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| regno      | int(10)     | YES  |     | NULL    |       |
+| name       | varchar(20) | YES  |     | NULL    |       |
+| dept       | varchar(10) | YES  |     | NULL    |       |
+| fathername | varchar(10) | YES  |     | NULL    |       |
+| subject    | varchar(10) | YES  | MUL | NULL    |       |
+| marks      | int(2)      | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+6 rows in set (0.01 sec)
+
+mysql> select*from mentees;
++-----------+----------+------+------------+---------+-------+
+| regno     | name     | dept | fathername | subject | marks |
++-----------+----------+------+------------+---------+-------+
+| 192211280 | goutham  | ece  | krishna    | NULL    |    93 |
+| 192211280 | goutham  | ece  | krishna    | NULL    |    93 |
+| 192211281 | geethika | cse  | prasad     | dbms    |    95 |
+| 192211291 | raghu    | cse  | ram        | dbms    |    95 |
+| 192211283 | balaji   | bme  | narayana   | pom     |    99 |
+| 192220546 | moni     | bme  | narayana   | pom     |    99 |
++-----------+----------+------+------------+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> select repeat(name,2) from mentees;
++------------------+
+| repeat(name,2)   |
++------------------+
+| gouthamgoutham   |
+| gouthamgoutham   |
+| geethikageethika |
+| raghuraghu       |
+| balajibalaji     |
+| monimoni         |
++------------------+
+6 rows in set (0.00 sec)
+
+mysql> select repeat(dept,2) from mentees;
++----------------+
+| repeat(dept,2) |
++----------------+
+| eceece         |
+| eceece         |
+| csecse         |
+| csecse         |
+| bmebme         |
+| bmebme         |
++----------------+
+6 rows in set (0.00 sec)
+
+mysql>
